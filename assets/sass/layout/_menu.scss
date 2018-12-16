@@ -1,140 +1,108 @@
 ///
-/// Phantom by HTML5 UP
+/// Solid State by HTML5 UP
 /// html5up.net | @ajlkn
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
 
 /* Menu */
 
-	#wrapper {
-		@include vendor('transition', 'opacity #{_duration(menu)} ease');
-		opacity: 1;
+	#page-wrapper {
+		@include vendor('transition', 'filter 0.25s ease');
 	}
 
 	#menu {
-		@include vendor('transform', 'translateX(#{_size(menu)})');
-		@include vendor('transition', ('transform #{_duration(menu)} ease', 'visibility #{_duration(menu)}'));
-		position: fixed;
-		top: 0;
-		right: 0;
-		width: _size(menu);
-		max-width: 80%;
-		height: 100%;
-		-webkit-overflow-scrolling: touch;
-		background: _palette(fg);
-		color: _palette(bg);
+		@include vendor('align-items', 'center');
+		@include vendor('display', 'flex');
+		@include vendor('justify-content', 'center');
+		@include vendor('pointer-events', 'none');
+		@include vendor('transition', ('opacity #{_duration(menu)} ease', 'visibility #{_duration(menu)}'));
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		background: transparentize(_palette(bg), 0.2);
 		cursor: default;
+		height: 100%;
+		left: 0;
+		opacity: 0;
+		position: fixed;
+		text-align: center;
+		top: 0;
 		visibility: hidden;
-		z-index: _misc(z-index-base) + 2;
+		width: 100%;
 
-		> .inner {
-			@include vendor('transition', 'opacity #{_duration(menu)} ease');
+		.inner {
+			@include padding(2.5em, 1.5em);
+			@include vendor('transform', 'translateY(0.5em)');
+			@include vendor('transition', ('opacity #{_duration(menu)} ease','transform #{_duration(menu)} ease'));
 			-webkit-overflow-scrolling: touch;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			padding: 2.75em;
+			background: _palette(accent);
+			border-radius: _size(border-radius);
+			display: block;
+			max-width: 100%;
 			opacity: 0;
-			overflow-y: auto;
-
-			> ul {
-				list-style: none;
-				margin: 0 0 (_size(element-margin) * 0.5) 0;
-				padding: 0;
-
-				> li {
-					padding: 0;
-					border-top: solid 1px transparentize(_palette(bg), 0.85);
-
-					a {
-						display: block;
-						padding: 1em 0;
-						line-height: 1.5;
-						border: 0;
-						color: inherit;
-					}
-
-					&:first-child {
-						border-top: 0;
-						margin-top: -1em;
-					}
-				}
-			}
+			position: relative;
+			width: 18em;
 		}
 
-		> .close {
-			@include vendor('transition', (
-				'opacity #{_duration(menu)} ease',
-				'transform #{_duration(menu)} ease'
-			));
-			@include vendor('transform', 'scale(0.25) rotate(180deg)');
-			-webkit-tap-highlight-color: transparent;
-			display: block;
-			position: absolute;
-			top: 2em;
-			left: -6em;
-			width: 6em;
-			text-indent: 6em;
-			height: 3em;
+		h2 {
+			border-bottom: solid 2px _palette(border);
+			padding-bottom: 1em;
+		}
+
+		.close {
+			background-image: url('images/close.svg');
+			background-position: 75% 25%;
+			background-repeat: no-repeat;
+			background-size: 2em 2em;
 			border: 0;
-			font-size: 1em;
-			opacity: 0;
+			content: '';
+			display: block;
+			height: 4em;
 			overflow: hidden;
+			position: absolute;
+			right: 0;
+			text-align: center;
+			text-indent: 4em;
+			top: 0;
+			width: 4em;
+		}
+
+		.links {
+			list-style: none;
+			margin-bottom: (_size(element-margin) - 0.5em);
 			padding: 0;
-			white-space: nowrap;
 
-			&:before, &:after {
-				@include vendor('transition', 'opacity #{_duration(transition)} ease');
-				content: '';
-				display: block;
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background-position: center;
-				background-repeat: no-repeat;
-				background-size: 2em 2em;
-			}
+			li {
+				padding: 0;
 
-			&:before {
-				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="none"><style>line { stroke-width: 8px; stroke: #{_palette(accent1)}; }</style><line x1="15" y1="15" x2="85" y2="85" /><line x1="85" y1="15" x2="15" y2="85" /></svg>');
-				opacity: 0;
-			}
+				a {
+					border-radius: _size(border-radius);
+					border: 0;
+					display: block;
+					font-family: _font(family-heading);
+					font-size: 0.8em;
+					font-weight: _font(weight-heading);
+					letter-spacing: _font(kern-heading);
+					line-height: 1.85em;
+					padding: 0.75em 0;
+					text-transform: uppercase;
 
-			&:after {
-				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="none"><style>line { stroke-width: 8px; stroke: #{_palette(fg)}; }</style><line x1="15" y1="15" x2="85" y2="85" /><line x1="85" y1="15" x2="15" y2="85" /></svg>');
-				opacity: 1;
-			}
-
-			&:hover {
-				&:before {
-					opacity: 1;
-				}
-
-				&:after {
-					opacity: 0;
+					&:hover {
+						background: saturate(darken(_palette(accent), 3), 1.5);
+					}
 				}
 			}
 		}
 
 		@include breakpoint('<=small') {
-			@include vendor('transform', 'translateX(#{_size(menu) * 0.75})');
-			width: (_size(menu) * 0.75);
+			.inner {
+				max-height: 100%;
+				overflow-y: auto;
+				overflow-x: hidden;
 
-			> .inner {
-				padding: 2.75em 1.5em;
-			}
-
-			> .close {
-				top: 0.5em;
-				left: -4.25em;
-				width: 4.25em;
-				text-indent: 4.25em;
-
-				&:before, &:after {
+				.close {
 					background-size: 1.5em 1.5em;
 				}
 			}
@@ -142,22 +110,17 @@
 	}
 
 	body.is-menu-visible {
-		#wrapper {
-			@include vendor('pointer-events', 'none');
-			cursor: default;
-			opacity: 0.25;
+		#page-wrapper {
+			@include vendor('filter', 'blur(1.5px)');
 		}
 
 		#menu {
-			@include vendor('transform', 'translateX(0)');
+			@include vendor('pointer-events', 'auto');
+			opacity: 1;
 			visibility: visible;
 
-			> * {
-				opacity: 1;
-			}
-
-			.close {
-				@include vendor('transform', 'scale(1.0) rotate(0deg)');
+			.inner {
+				@include vendor('transform', 'translateY(0)');
 				opacity: 1;
 			}
 		}
