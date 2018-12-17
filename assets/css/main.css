@@ -3095,7 +3095,7 @@ input, select, textarea {
 					margin-left: 0.75em;
 				}
 
-				#header nav cvlink {
+				#header nav .cvlink {
 					text-decoration: none;
 					-moz-transition: background-color 0.2s ease-in-out;
 					-webkit-transition: background-color 0.2s ease-in-out;
