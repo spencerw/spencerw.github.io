@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Phantom by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<img src="images/header.jpg">
+
+						</div>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Searching for Stellar Flares</h1>
+							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
+							<p>Launched in 2018, the Transiting Exoplanet Survey Telesceope (TESS), was designed to search for planets around 200,000 bright, nearby stars. To do so, it continuously stares at a patch of sky for nearly a month, meticulously recording the brightness of every bright star in its field of view every few minutes. Although only the closest and largest gas giant planets can actually be directly photographed, many smaller Earth-like worlds cause a telltale periodic dimming of their host star, as they block a tiny fraction of the star's light as they pass in front. From these dimming events, astronomers are able to measure the size of the planet, along with its distance from the host star.</p>
+							<p>One of the coolest things about working with large datasets like these as an astronomer is that there is often rich information lurking in the data that has nothing to do with the mission's intended purpose. In the case of TESS, these brightness measurements don't just tell us about the planetary population in our little corner of the galaxy, but also about the living, breathing, roiling day-to-day activities of the stars themselves.</p>
+							<p>The activity cycles of our own Sun have been a subject of interest for well over 100 years now. Because the Sun is a hot, bright ball of differentially rotating fluid (the equator of the sun actually rotates much slower than the poles), it's magnetic field lines can become bunched up and twisted. In some cases, this bunching and twisting produces sun spots, which we can observe as the move across the face of the rotating Sun from day to day. In more extreme cases, this twisting can eventually reach a breaking point, where huge amounts of material and energy are launched from the surface of the Sun as a flare event. If the Earth is in the wrong place at the wrong time, these flares can disrupt electrical grids, communication networks and (very) occasionally cause mass extinction events.</p>
+							<p>Although we have collected an incredible amount of data on the day-to-day activities of the Sun, we still don't have much context for it. Not all stars in our galaxy are the same age as the sun, and they don't all share the same internal structure or the same composition. The Sun follows a fairly regular 11-year 'cycle' between periods of quiescence and extreme activity. It is not yet known whether other stars exhibit similar activity cycles, or whether there is any dependence on age or size of the star. In addition to helping us understand more about our own Sun, having a broader understanding of where and when stars produce flares is crucial for finding other places in our galaxy that might be hospitable for life.</p>
+
+							<p>To help answer these questions, I built a pipeline to detect flare events from the nearly 200,000 stars that TESS observed during the first two years of its mission. The data I used was provided as a series of pre-processed light curve files, in which brightness measurements from within pre-determined target apertures are taken from the camera images at 2-minute intervals. Although the data is already pre-processed and cleaned up by NASA, it still contains a number of systematic errors, missing values and occasional erroneous measurements. Relevant to my flare detection pipeline are two particular effects of concern: cosmic ray hits which produce sudden brightness increases in the images, and reflections from Moon and Earth-shine depending on the present position of the space telescope relative to the Earth, Moon and Sun. Rather than removing these effects before processing the data, I chose to reject flare detections caused by these events, which I will discuss later.</p>
+
+							<p>To identify segments of the time series data that might be potential flares, I use a technique known as change point analysis (CPA). The approach is fairly straightforward: the data points are stepped through and segments where there is a sudden change in the mean and variance are flagged as 'change points'. Pairs of these change points are then used to mark the boundary of the candidate flare events.</p>
+
+							<p>If I was only concerned with <i>when</i> flare events potentially happen, this CPA technique would be enough. However, another crucial piece of information is how much energy is actually released from each flare. This can be obtained by integrating the area underneath the flare event in the time series data. However, the baseline brightness of the target stars is not constant (see below). Much like the sun, many other active stars exhibit a semi-periodic variation in brightness as star spots rotate in and out of view. To get the true brightness change due to the flare, we first need to subtract out the brightness variations due to rotation. Additionally, flare events produce a fairly well-defined jump in brightness, followed by a much longer decay back to baseline. Removing the effects of rotation will also allow us to fit a flare brightness model to the candidate events and make it easier to reject erroneous changes in brightness that are not actually due to flares.</p>
+
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel venenatis mauris vehicula hendrerit.</p>
+							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="copyright">
+								<li>&copy; Spencer Wallace. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
