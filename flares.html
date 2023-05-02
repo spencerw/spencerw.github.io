@@ -29,7 +29,10 @@
 					<div id="main">
 						<div class="inner">
 							<h1>Searching for Stellar Flares</h1>
-							<span class="image main"><img src="images/flare/tess_ffi.jpeg" alt="" /></span>
+							<div class='figure_div'>
+								<img src='images/flare/tess_ffi.jpeg' class='figure_img'>
+								A panoramic view of a small section of the milky way galaxy, shown across a mosaic of full-frame images taken with the Transiting Exoplanet Survey Telescope (TESS). Although TESS's primary mission is to find planets crossing between us and the host stars, the telescope also provides a wealth of time series data of the brightnesses of the stars themselves. Image credit: NASA/TESS
+							</div>
 							<p>Launched in 2018, the Transiting Exoplanet Survey Telesceope (TESS), was designed to search for planets around 200,000 bright, nearby stars. To do so, it continuously stares at a patch of sky for nearly a month, meticulously recording the brightness of every bright star in its field of view every few minutes. Although only the closest and largest gas giant planets can actually be directly photographed, many smaller Earth-like worlds cause a telltale periodic dimming of their host star, as they block a tiny fraction of the star's light as they pass in front. From these dimming events, astronomers are able to measure the size of the planet, along with its distance from the host star.</p>
 							<p>One of the coolest things about working with large datasets like these as an astronomer is that there is often rich information lurking in the data that has nothing to do with the mission's intended purpose. In the case of TESS, these brightness measurements don't just tell us about the planetary population in our little corner of the galaxy, but also about the living, breathing, roiling day-to-day activities of the stars themselves.</p>
 							<p>The activity cycles of our own Sun have been a subject of interest for well over 100 years now. Because the Sun is a hot, bright ball of differentially rotating fluid (the equator of the sun actually rotates much slower than the poles), it's magnetic field lines can become bunched up and twisted. In some cases, this bunching and twisting produces sun spots, which we can observe as the move across the face of the rotating Sun from day to day. In more extreme cases, this twisting can eventually reach a breaking point, where huge amounts of material and energy are launched from the surface of the Sun as a flare event. If the Earth is in the wrong place at the wrong time, these flares can disrupt electrical grids, communication networks and (very) occasionally cause mass extinction events.</p>
@@ -72,9 +75,21 @@
 
 							<p>Although TESS provides incredibly accurate brightness measurements, it only tells us about a star's 2 dimensional position on the sky. To actually figure out how where each of these stars lies in relation to the galactic disk, we would need distance information as well. Fortunately, the European Space Agency is currently operating a mission galled <i>Gaia</i>, which is compiling a database of incredibly precise 3D positions and velocities for nearly 1 billion Milky Way stars. A significant fraction of these stars are also TESS targets that fall within our flare sample.</p>
 
+							<div class='figure_div'>
+								<img src='images/flare/gaia_startrails.jpeg' class='figure_img'>
+								A panoramic image of the milky way in visible light. Overlaid in white are the positions of a small sample of stars whose positions and velocities were measured with Gaia. Their trajectories, extrapolated forward by about 400,000 years, show how alive and dynamic our galaxy truly is. Image credit: ESA/Gaia/DPAC
+							</div>
+
 							<p>It turns out that roughly 7,000 of the flare stars detected by our pipeline also have 3D position information measured by Gaia. After separating the flaring and non-flaring stars in the sample and binning them by height above the galactic midplane, an incredibly clear trend pops out. Most stars lie within about 100 pc of the midplane, and we find that the fraction of flaring stars drops by nearly an order of magnitude within this distance.</p>
 
-							<p>Another indicator of age we can look at comes from measuring the rotation periods of the stars in the sample. </p>
+							<p>Another indicator of age we can look at comes from measuring the rotation periods of the stars in the sample. As a result of gravitational collapse, all stars begin their lives with a significant amount of rotation. Over time, the star loses its angular momentum through a process known as magnetic braking. As a side effect of this rotation, magnetic field lines at the surface of the star can become twisted and bunched up. Like a rubber band snapping, too much strain can cause the field lines to suddenly and violently rearrange, giving rise to flares and mass ejection events. As the rotation of the star slows, these powerful events should become less frequent. Therefore, we should see a diminishing trend between rotation period and flare rate.</p>
+
+							<div class='figure_div'>
+								<img src='images/flare/4.png' class='figure_img'>
+								Left: The total fraction of flare stars in our sample as a function of rotation period. Beyond about 1 day, there is a clear, decreasing trend between rotation and flare activity. Right: Total fraction of flare stars, binned by height (shown in parsecs) above the galactic midplane. Because stars only end up above or below the disk of the galaxy after drifting away from their central birth location, we should expect to see a decreasing trend between vertical position and age (and therefore flare rate).
+							</div>
+
+							<p>In total, we identify over 27,000 individual flare from over 7,000 different stars, each with precise energy and 3D position measurements after crossmatching with Gaia. As a byproduct of the detrending using the Gaussian Process model, we also produce rotation period measurements for another 80,000 or so stars. All of the lightcurves used in this project were individual 30 day segments. However, the TESS observing footprints contain a significant amount of overlap between sectors, meaning that a subset of the data could potentially be combined to provide a much longer baseline for some of the stars. In addition, the TESS observing field overlaps with the footprint of the Kepler space telescope, which was tasked with finding exoplanets using a similar method about 10 years prior. By combining Kepler lightcurves with TESS lightcurves, one could potentially compare the flare rates of individual stars over the last decade and search for magnetic activity cycles. This has, so far, only been measured on the Sun.</p>
 						</div>
 					</div>
 
