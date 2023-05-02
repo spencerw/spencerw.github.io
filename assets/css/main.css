@@ -74,6 +74,17 @@ input, select, textarea {
 
 /* Basic */
 
+	.figure_img {
+		width: 100%;
+	}
+
+	.figure_div {
+		font-style: italic;
+		margin-left: 1em;
+		margin-top: 1em;
+		margin-bottom: 1.5em;
+	}
+
 	@-ms-viewport {
 		width: device-width;
 	}
