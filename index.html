@@ -31,7 +31,7 @@
                         <img class="profile" src="images/profilePic.jpeg">
 						<div class="inner">
 							<h2>Spencer C. Wallace</h2>
-							<p>Astronomy graduate student at the University of Washington</p>
+							<p>PhD Astronomy, BS Computer Science</p>
 						</div>
                         </div>
 					</section>
@@ -45,7 +45,9 @@
 									<a href="#" class="image"><img src="images/ppd.jpg" alt="" /></a>
 									<div class="content">
 										<h2 class="major">About Me</h2>
-										<p>I'm a member of the UW Astronomy <a href="http://depts.washington.edu/astron/research/n-body-shop/">N-body shop</a> working with Thomas Quinn to study simulations of planet formation. In particular, I'm interested in how this process plays out around M stars, which put out huge amounts of radiation during the pre main-sequence phase and are known to host extremely short period planets. When I'm not thinking about planet formation, I'm an avid hiker/backpacker and play bass for the band <a href="http://www.nightlunchband.com/">Night Lunch</a>.</p>
+										<p>I completed my PhD work as a member of the UW Astronomy <a href="http://depts.washington.edu/astron/research/n-body-shop/">N-body shop</a> working with Dr. Thomas Quinn to develop and use highly parallel tree-based algorithms to simulate N-body interactions in a variety of astronomical contexts. The bulk of my thesis work involved simulating the collisional agglomeration of solids in planet-forming disks to understand the formation history of tightly-packed exoplanetary systems. I also used the same code to study hydrodynamic interactions in galaxies. In addition, I helped to adapt some of the algorithms we used to develop <a href="https://paratreet.github.io/">ParaTreeT</a>, which is a toolkit to quickly and easily develop and test spatial tree algorithms in a HPC environment.
+
+										When I'm not thinking about N-body simulations or tree algorithms, I'm an avid hiker/backpacker and play bass for the bands <a href="http://www.nightlunchband.com/">Night Lunch<a> and <a href="http://www.cheerstotheoutside.com/">Cheers to the Outside</a>.</p>
 									</div>
 								</div>
 							</section>
@@ -55,8 +57,9 @@
 								<div class="inner">
 									<a href="#" class="image"><img src="images/mdwarf.jpg" alt="" /></a>
 									<div class="content">
-										<h2 class="major">Planet Formation Around M Dwarfs</h2>
-										<p>M stars have been the target of many recent exoplanet searches due to their abundance throughout the galaxy and also their strong planetary transit signals. The influx of recent exoplanet discoveries is causing us to rethink how the planet formation process works. In particular, M stars are extremely luminous during their pre-main sequence phase, which likely has a strong influence on both the thermodynamics and chemistry of the protoplanetary disk. The influence of stellar irradiation on early protoplanetary disks has not been well studied in the context of a fully 3D hydrodynamic treatment. This is something I am working to do with our N-body code <a href="https://github.com/N-BodyShop/changa/wiki/ChaNGa">ChaNGa</a>.<br/><br/>In addition, I have also been using N-body simulations to look at planetesimal accretion at extremely short orbital periods. There have been a number of STIPs (systems of tightly-packed inner planets) discovered around M stars and whether these planets could have formed in situ or formed further out and then migrated inwards is still up for debate. In particular, planetesimal accretion has not been well studied outside of the context of the Solar System and a better understanding of this process at short orbital periods could help answer some of these questions.</p>
+										<h2 class="major">Simulating the Assembly of Terrestrial Planets</h2>
+										<p>Recent planet-finding surveys have discovered that tightly-packed systems of rocky planets are a significant outcome of the planet formation process. Current models have great difficulty at reproducing these types of systems. Part of this difficulty comes from that fact that the final stages of planet formation are chaotic and must be modeled with N-body simulations. Conventional computational constraints require that these simulations begin with unrealistically large super-particles.</p>
+										<p>As part of my thesis work, I extended the highly-parallel N-body code <a href="https://github.com/N-BodyShop/changa">ChaNGa</a> to simultaneously model gravitational interactions and collisional growth between large collections of particles. Upon doing so, I ran the first-ever direct N-body simulations of planet growth starting with realistic-sized bodies. The first stage of this process is <a href="https://doi.org/10.3847/1538-4357/ace89c">published in the Astrophysical Journal</a> and the second, chaotic stage is described in the <a href="https://www.proquest.com/docview/2864408983">fifth chapter of my PhD thesis.</a></p>
 									</div>
 								</div>
 							</section>
@@ -66,8 +69,9 @@
 								<div class="inner">
 									<a href="#" class="image"><img src="images/oli.png" alt="" /></a>
 									<div class="content">
-										<h2 class="major">Planetesimal Accretion in the Solar System</h2>
-										<p>Although planetesimal accretion in the Solar System has been the subject of many studies over the last few decades, there have been very few direct N-body simulations of this process due to the massive computational expense. Using our highly parallel N-body code <a href="https://github.com/N-BodyShop/changa/wiki/ChaNGa">ChaNGa</a>, we recently ran the <a href="https://arxiv.org/abs/1810.07201">highest resolution N-body simulation of planetesimal accretion to date</a> and showed that certain dynamical interactions between the embryos and planetesimals only turn are only effective if the distribution of planetesimals is sufficiently finely-grained.<br/><br/>  Although our work was focused on examining planetesimal accretion in the vicinity of the Earth's orbit, we were able to produce a power-law break in the size distribution of planetesimals, which is reminiscent of the break seen in the size distribution of certain families of asteroid belt objects. We showed that this break is sensitive to the initial planetesimal size and could possibly be used to constrain planetesimal formation models.</p>
+										<h2 class="major">Using a Neural Network to Synthesize Initial Conditions for Planet Formation Simulations</h2>
+										<p>Due to the chaotic nature of the final stages of the planet formation process, a large number of simulations are required to fully capture and understand the outcome of this process. Unfortunately, the immense computational expense of these simulations prohibits one from evolving more than a few sets of initial conditions. However, due to the progressive growth of the protoplanets, the particle count and computational cost decreases as the simulations evolve.</p>
+										<p>To solve both of these issues, I use the intermediate snapshots from the simulations to train a neural network to effectively learn the posterior distributions of the particles in the chosen parameter space. This is done using a Generative Adversarial Network (GAN) through the <a href="https://github.com/sdv-dev/CTGAN">CTGAN</a> library, which is in turn powered by PyTorch. By then drawing from the posterior distributions modeled by the GAN, I produce a significantly broader set of intermediate stage initial conditions which can be run to completion and provide a larger set of simulated planets to perform statistical analyses on. The full technique is described in the <a href="https://www.proquest.com/docview/2864408983">fifth chapter of my PhD thesis.</p>
 									</div>
 								</div>
 							</section>
@@ -77,8 +81,8 @@
 								<div class="inner">
 									<a href="#" class="image"><img src="images/hltau.jpg" alt="" /></a>
 									<div class="content">
-										<h2 class="major">Detecting Planets Through Planetesimal Collisions</h2>
-                                            <p>Recent high-resolution images from ALMA have shown that protoplanetary disks can exhibit a rich variety of structure. One possible explanation for some of the ring-like structure seen in the dust emission from these disks are perturbations from nearby planets. In particular, mean motion resonances with unseen planets have been used to explain some of the banded structure seen in dusty disks such as HL Tau and TW Hya. The idea is that collisional grinding between planetesimals is responsible for a most of the dust emission. However, the influence of mean motion resonances on local planetesimal collision rates is not well understood. We have been using direct N-body simulations to study this problem and examine whether these resonances can create detectable changes in the dust emission of the disk.</p>
+										<h2 class="major">Optimizing Highly Parallel Spatial Tree Algorithms</h2>
+                                            <p></p>
 									</div>
 								</div>
 							</section>
@@ -90,6 +94,22 @@
 									<div class="content">
 										<h2 class="major">Teaching and Outreach</h2>
 										<p>In addition to research, I actively participated as a teacher and mentor for the UW Astronomy department. I have acted as a teaching assistant for our department's intro level astronomy classes numerous times and also act as a mentor for the <a href="http://depts.washington.edu/premap/">pre-MAP</a> program, which acts to introduce early undergraduates to astronomy research.<br/><br/>I also worked as an outreach specialist for Kitt Peak National Observatory in 2014 and 2015, in which I lead night time stargazing programs for the general public.</p>
+										<p>From 2019 to 2020, I also acted as an editor and writer for the popular science blog <i>Astrobites</i>. Links to the articles I've written can be found below:</p>
+										<a href='https://astrobites.org/2019/01/29/stirring-up-rocky-worlds/' target='_blank'>Stirring up rocky worlds</a><br>
+										<a href='https://astrobites.org/2019/04/19/disk-evaporation-ob/' target='_blank'>Evaporating disks with massive stars</a><br>
+										<a href='https://astrobites.org/2019/04/22/planetary-death-census/' target='_blank'>A planetary death census</a><br>
+										<a href='https://astrobites.org/2019/06/27/unraveling-the-formation-history-of-hot-jupiters/' target='_blank'>Unraveling the formation history of hot jupiters</a><br>
+										<a href='https://astrobites.org/2019/07/15/peas-in-a-pod/' target='_blank'>Peas in a pod?</a><br>
+										<a href='https://astrobites.org/2019/08/14/invisible-giant/' target='_blank'>The imprint of an invisible giant</a><br>
+										<a href='https://astrobites.org/2019/10/04/grad-school-finances/' target='_blank'>Managing your personal finances in grad school (and beyond)</a><br>
+										<a href='https://astrobites.org/2019/11/19/tess-evryflare/' target='_blank'>Combining ground and space-based observations to find evryflare</a><br>
+										<a href='https://astrobites.org/2020/01/14/more-metals-more-planets/' target='_blank'>More metals, more planets?</a><br>
+										<a href='hhttps://astrobites.org/2020/02/11/secrets-of-chaos/' target='_blank'>Unlocking the secrets of chaotic planetary systems</a><br>
+										<a href='https://astrobites.org/2020/04/23/little-planets-that-could/' target='_blank'>The little planets that could</a><br>
+										<a href='https://astrobites.org/2020/06/30/heavy-metal-jupiters/' target='_blank'>Heavy-metal jupiters</a><br>
+										<a href='https://astrobites.org/2020/09/18/aeolian-erosion-barrier/' target='_blank'>Aeolian-erosion in protoplanetary disks</a><br>
+										<a href='https://astrobites.org/2020/10/06/m-dwarf-hurricane/' target='_blank'>Stirring up hurricanes on other worlds</a><br>
+										<a href='https://astrobites.org/2020/12/15/shift-stacking/' target='_blank'>Shift-stacking the night away</a><br>
 									</div>
 								</div>
 							</section>
@@ -100,12 +120,6 @@
 						<div class="inner">
 							<h2 class="major">Get in touch</h2>
 							<ul class="contact">
-								<li class="fa-home">
-									Spencer Wallace<br />
-									Department of Astronomy, University of Washington<br />
-									Physics and Astronomy Building<br />
-                                    Box 351580, Seattle, WA
-								</li>
 								<li class="fa-envelope"><a href="mailto:scw7@uw.edu">scw7@uw.edu</a></li>
 								<li class="fa-twitter"><a href="http://www.twitter.com/scwallace7">twitter.com/scwallace7</a></li>
 								<li class="fa-github"><a href="http://www.github.com/spencerw">github.com/spencerw</a></li>
