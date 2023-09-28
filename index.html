@@ -21,7 +21,7 @@
 					<header id="header" class="alt">
 						<h1><a href="index.html">Spencer Wallace</a></h1>
 						<nav>
-							<a class="cvlink" href="cvSpencerWallace.pdf">Link to CV</a>
+							<a class="cvlink" href="https://github.com/spencerw/resume/blob/main/main.pdf">Link to Resume</a>
 						</nav>
 					</header>
 
@@ -55,11 +55,11 @@
 						<!-- Two -->
 							<section id="two" class="wrapper alt spotlight style2">
 								<div class="inner">
-									<a href="#" class="image"><img src="images/mdwarf.jpg" alt="" /></a>
+									<a href="#" class="image"><img src="images/plSim.jpg" alt="" /></a>
 									<div class="content">
 										<h2 class="major">Simulating the Assembly of Terrestrial Planets</h2>
 										<p>Recent planet-finding surveys have discovered that tightly-packed systems of rocky planets are a significant outcome of the planet formation process. Current models have great difficulty at reproducing these types of systems. Part of this difficulty comes from that fact that the final stages of planet formation are chaotic and must be modeled with N-body simulations. Conventional computational constraints require that these simulations begin with unrealistically large super-particles.</p>
-										<p>As part of my thesis work, I extended the highly-parallel N-body code <a href="https://github.com/N-BodyShop/changa">ChaNGa</a> to simultaneously model gravitational interactions and collisional growth between large collections of particles. Upon doing so, I ran the first-ever direct N-body simulations of planet growth starting with realistic-sized bodies. The first stage of this process is <a href="https://doi.org/10.3847/1538-4357/ace89c">published in the Astrophysical Journal</a> and the second, chaotic stage is described in the <a href="https://www.proquest.com/docview/2864408983">fifth chapter of my PhD thesis.</a></p>
+										<p>As part of my thesis work, I extended the highly-parallel N-body code <a href="https://github.com/N-BodyShop/changa">ChaNGa</a> to simultaneously model gravitational interactions and collisional growth between large collections of particles. Upon doing so, I ran the first-ever direct N-body simulations of planet growth starting with realistic-sized bodies. The first stage of this process is <a href="https://doi.org/10.3847/1538-4357/ace89c">published in the Astrophysical Journal</a> and the second, chaotic stage is described in the <a href="https://github.com/spencerw/phd_thesis/blob/main/uwthesis.pdf">fifth chapter of my PhD thesis.</a></p>
 									</div>
 								</div>
 							</section>
@@ -67,11 +67,11 @@
 						<!-- Three -->
 							<section id="three" class="wrapper spotlight style3">
 								<div class="inner">
-									<a href="#" class="image"><img src="images/oli.png" alt="" /></a>
+									<a href="#" class="image"><img src="images/corner.png" alt="" /></a>
 									<div class="content">
 										<h2 class="major">Using a Neural Network to Synthesize Initial Conditions for Planet Formation Simulations</h2>
 										<p>Due to the chaotic nature of the final stages of the planet formation process, a large number of simulations are required to fully capture and understand the outcome of this process. Unfortunately, the immense computational expense of these simulations prohibits one from evolving more than a few sets of initial conditions. However, due to the progressive growth of the protoplanets, the particle count and computational cost decreases as the simulations evolve.</p>
-										<p>To solve both of these issues, I use the intermediate snapshots from the simulations to train a neural network to effectively learn the posterior distributions of the particles in the chosen parameter space. This is done using a Generative Adversarial Network (GAN) through the <a href="https://github.com/sdv-dev/CTGAN">CTGAN</a> library, which is in turn powered by PyTorch. By then drawing from the posterior distributions modeled by the GAN, I produce a significantly broader set of intermediate stage initial conditions which can be run to completion and provide a larger set of simulated planets to perform statistical analyses on. The full technique is described in the <a href="https://www.proquest.com/docview/2864408983">fifth chapter of my PhD thesis.</p>
+										<p>To solve both of these issues, I use the intermediate snapshots from the simulations to train a neural network to effectively learn the posterior distributions of the particles in the chosen parameter space. This is done using a Generative Adversarial Network (GAN) through the <a href="https://github.com/sdv-dev/CTGAN">CTGAN</a> library, which is in turn powered by PyTorch. By then drawing from the posterior distributions modeled by the GAN, I produce a significantly broader set of intermediate stage initial conditions which can be run to completion and provide a larger set of simulated planets to perform statistical analyses on. The full technique is described in the <a href="https://github.com/spencerw/phd_thesis/blob/main/uwthesis.pdf">fifth chapter of my PhD thesis</a>.</p>
 									</div>
 								</div>
 							</section>
@@ -79,10 +79,12 @@
 						<!-- Two -->
 							<section id="two" class="wrapper alt spotlight style2">
 								<div class="inner">
-									<a href="#" class="image"><img src="images/hltau.jpg" alt="" /></a>
+									<a href="#" class="image"><img src="images/bh.jpeg" alt="" /></a>
 									<div class="content">
-										<h2 class="major">Optimizing Highly Parallel Spatial Tree Algorithms</h2>
-                                            <p></p>
+										<h2 class="major">Using Parallel Spatial Tree Algorithms for Astrophysical Applications</h2>
+                                            <p>Gravitationally bound systems such as star clusters, galaxies and planet-forming disks contain far too many particles to individually represent with an N-body simulation. Mutual gravitational force calculations, collision detection and hydrodynamic force calculations naively require O(N^2) evaluations when using a particle-based approach. However, a <a href="http://arborjs.org/docs/barnes-hut">Barnes-Hut</a>-like technique can be used to partition the volume into smaller units that are then represented with a tree data structure. By applying an opening criteria to each tree node, approximate forces can be computed in O(N log N) time.</p>
+                                            <p>Extending this technique to a highly parallel environment, however, is nontrivial. The bulk of my PhD thesis involved working with the N-body code <a href="https://github.com/N-BodyShop/changa">ChaNGa</a>, which is designed to make this approach highly scalable in a HPC environment. ChaNGa is built off of the <a href="https://charmplusplus.org/">Charm++</a> framework, which can handle load balancing and message passing on upwards to hundreds of thousands of cores.</p>
+                                            <p>I also assisted in the development of <a href="https://paratreet.github.io/">ParaTreeT</a>, another Charm++ application. ParaTreeT is designed to allow users to quickly and easily explore the performance of different spatial partitioning and tree traversal algorithms. There is no one-size-fits-all algorithm that works optimally for every data set. Instead, different symmetries and levels of homogeniety in simulated datasets are better suited with different algorithms. A publication exploring these concepts can be found <a href="https://doi.org/10.1109/IPDPS53621.2022.00079">here</a>.</p>
 									</div>
 								</div>
 							</section>
